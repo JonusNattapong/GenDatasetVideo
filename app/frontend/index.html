@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenDatasetVideo - Text-to-Video Dataset Generator</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to future CSS -->
+</head>
+<body>
+    <h1>Text-to-Video Dataset Generator</h1>
+
+    <div id="generator-section">
+        <h2>Generate New Video</h2>
+        <form id="generate-form">
+            <label for="prompt">Prompt:</label><br>
+            <textarea id="prompt" name="prompt" rows="3" required></textarea><br><br>
+
+            <fieldset>
+                <legend>Generation Parameters (SVD)</legend>
+                <!-- Add controls for SVD parameters here later -->
+                <label for="resolution">Resolution:</label>
+                <select id="resolution" name="resolution">
+                    <option value="1024x576" selected>1024x576</option>
+                    <option value="576x1024">576x1024</option>
+                    <!-- Add other common resolutions if needed -->
+                </select><br><br>
+
+                <label for="seed">Seed (optional, -1 for random):</label>
+                <input type="number" id="seed" name="seed" value="-1"><br><br>
+                <!-- Add more SVD specific parameters like motion_bucket_id, fps, noise_aug_strength etc. -->
+                <label for="motion_bucket_id">Motion Bucket ID:</label>
+                <input type="number" id="motion_bucket_id" name="motion_bucket_id" value="127" min="1"><br><br>
+
+                <label for="fps">FPS:</label>
+                <input type="number" id="fps" name="fps" value="6" min="1" max="30"><br><br>
+
+                <label for="noise_aug_strength">Noise Aug Strength:</label>
+                <input type="number" id="noise_aug_strength" name="noise_aug_strength" value="0.02" step="0.01" min="0"><br><br>
+
+            </fieldset>
+            <br>
+            <button type="submit">Generate Video</button>
+        </form>
+        <div id="status-area">
+            <p>Status: <span id="generation-status">Idle</span></p>
+            <progress id="generation-progress" value="0" max="100" style="display: none;"></progress>
+        </div>
+        <div id="result-area" style="margin-top: 20px;">
+            <h3>Generated Video:</h3>
+            <div id="video-container">
+                <!-- Video will be loaded here -->
+            </div>
+            <pre id="metadata-display"></pre> <!-- Display metadata -->
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="dataset-section">
+        <h2>Manage Datasets</h2>
+        <!-- Add dataset listing and management controls here later -->
+        <p>(Dataset management features will be added here)</p>
+    </div>
+
+    <script src="/static/script.js"></script> <!-- Link to future JS -->
+</body>
+</html>

@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard] # Includes standard dependencies like pydantic, starlette
+
+# Dependencies for Background Tasks and Caching
+celery[redis] # Distributed Task Queue
+redis # For caching and as message broker for Celery
+aioredis # Async Redis client for FastAPI
+
+# Dependencies for Stable Video Diffusion & ML
+torch # PyTorch - Note: Installation might need specific CUDA version, check PyTorch website if issues arise
+diffusers
+transformers
+accelerate
+Pillow # For image manipulation (creating placeholder)
+# Add image/video handling library if needed later, e.g., imageio or moviepy
