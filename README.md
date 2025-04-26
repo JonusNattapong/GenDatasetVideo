@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![GenDatasetVideo Logo](https://via.placeholder.com/800x200/0d1117/ffffff?text=GenDatasetVideo)
+![GenDatasetVideo Logo](logogen.png)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
