@@ -154,7 +154,7 @@ All Rights Reserved. See [LICENSE](LICENSE) file for details.
 
 <div align="center">
 
-Made with ❤️ by Your Name/Organization
+Made with ❤️ by JonusNattapong/zombitx64
 
 [🔝 Back to Top](#-gendatasetvideo)
 
