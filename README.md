@@ -1,120 +1,161 @@
-# GenDatasetVideo
+# 🎬 GenDatasetVideo
 
-A web application for generating video datasets using text prompts, powered by Stable Diffusion and Stable Video Diffusion.
+<div align="center">
 
-## Features
+![GenDatasetVideo Logo](https://via.placeholder.com/800x200/0d1117/ffffff?text=GenDatasetVideo)
 
-- **Text-to-Video Generation:** Generate videos from text descriptions using:
-  - Text-to-Image (Stable Diffusion v1.5)
-  - Image-to-Video (Stable Video Diffusion img2vid-xt)
-- **Dataset Management:** Organize generated content into datasets
-- **Asynchronous Processing:** Background task processing for long-running generations
-- **Performance Optimizations:** Redis caching and Celery task queue
-- **Export Capabilities:** Export datasets as ZIP files with metadata
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
+[![Stable Diffusion](https://img.shields.io/badge/Stable_Diffusion-v1.5-orange.svg)](https://huggingface.co/runwayml/stable-diffusion-v1-5)
+[![License](https://img.shields.io/badge/License-All_Rights_Reserved-red.svg)](LICENSE)
 
-## System Requirements
+*Generate stunning video datasets from text descriptions using AI 🚀*
 
-- Python 3.8+
-- CUDA-capable GPU (recommended)
-- Redis Server
+[Features](#✨-features) • [Installation](#🚀-installation) • [Usage](#📖-usage) • [Documentation](#📚-documentation)
 
-## Installation
+</div>
 
-1. Clone the repository:
+---
+
+## ✨ Features
+
+<div align="center">
+
+| 🎥 Generation | 📊 Management | 🚀 Performance |
+|--------------|--------------|----------------|
+| Text-to-Image with SD 1.5 | Dataset Organization | Async Processing |
+| Image-to-Video with SVD | Metadata Tracking | Redis Caching |
+| Custom Parameters | Export to ZIP | Celery Task Queue |
+| Resolution Control | File Management | GPU Optimization |
+
+</div>
+
+## 🎯 System Requirements
+
+- 🐍 Python 3.8 or higher
+- 🎮 CUDA-capable GPU (recommended)
+- 📦 Redis Server
+- 💾 Adequate storage space
+
+## 🚀 Installation
+
+1️⃣ **Clone the Repository**
+
 ```bash
 git clone https://github.com/yourusername/GenDatasetVideo.git
 cd GenDatasetVideo
 ```
 
-2. Create and activate a virtual environment:
+2️⃣ **Set Up Virtual Environment**
+
 ```bash
+# Create environment
 python -m venv .venv
+
+# Activate (choose based on your OS)
 # Windows
 .\.venv\Scripts\activate
 # Linux/Mac
 source .venv/bin/activate
 ```
 
-3. Install dependencies:
+3️⃣ **Install Dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running the Application
+## 📖 Usage
 
-1. Start Redis Server:
+1️⃣ **Start Redis Server**
+
 ```bash
 redis-server
 ```
 
-2. Start Celery Worker:
+2️⃣ **Launch Celery Worker**
+
 ```bash
 celery -A app.backend.celery_app worker --loglevel=info
 ```
 
-3. Start the FastAPI Server:
+3️⃣ **Run FastAPI Server**
+
 ```bash
-# Development with auto-reload
+# Development
 uvicorn app.backend.main_async:app --reload --port 8000
+
 # Production
 uvicorn app.backend.main_async:app --port 8000
 ```
 
-4. Open your browser and navigate to `http://localhost:8000`
+4️⃣ **Access the Application**
 
-## Project Structure
+- Open `http://localhost:8000` in your browser
+- Start generating amazing videos! 🎉
+
+## 🏗️ Project Structure
 
 ```
-app/
-├── backend/
-│   ├── main.py              # Synchronous API implementation
-│   ├── main_async.py        # Asynchronous API with Celery
-│   ├── celery_app.py        # Celery worker and task definitions
-│   └── celeryconfig.py      # Celery configuration
-├── frontend/
-│   ├── index.html          # Web interface
-│   └── static/
-│       ├── script.js       # Frontend JavaScript
-│       └── style.css       # CSS styles
-└── datasets/               # Generated content
-    └── <dataset_name>/
-        ├── images/         # Generated images
-        ├── videos/         # Generated videos
-        ├── exports/        # Dataset exports
-        └── metadata.json   # Dataset metadata
+GenDatasetVideo/
+├── 📁 app/
+│   ├── 📁 backend/
+│   │   ├── 📄 main.py           # Synchronous API
+│   │   ├── 📄 main_async.py     # Async API with Celery
+│   │   ├── 📄 celery_app.py     # Worker definitions
+│   │   └── 📄 celeryconfig.py   # Celery settings
+│   ├── 📁 frontend/
+│   │   ├── 📄 index.html        # Web interface
+│   │   └── 📁 static/
+│   │       ├── 📄 script.js     # Frontend logic
+│   │       └── 📄 style.css     # Styling
+│   └── 📁 datasets/             # Generated content
 ```
 
-## API Endpoints
+## 🔗 API Endpoints
 
-- `POST /api/generate` - Generate video from text prompt
-- `GET /api/tasks/{task_id}` - Check task status
-- `GET /api/datasets` - List all datasets
-- `POST /api/datasets/{name}/export` - Export dataset as ZIP
-- `DELETE /api/datasets/{name}` - Delete dataset
-- `GET /datasets/{name}/videos/{file}` - Get video file
-- `GET /datasets/{name}/images/{file}` - Get image file
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/generate` | POST | Generate video from text |
+| `/api/tasks/{task_id}` | GET | Check task status |
+| `/api/datasets` | GET | List all datasets |
+| `/api/datasets/{name}/export` | POST | Export as ZIP |
+| `/api/datasets/{name}` | DELETE | Delete dataset |
+| `/datasets/{name}/videos/{file}` | GET | Get video file |
+| `/datasets/{name}/images/{file}` | GET | Get image file |
 
-## Configuration
+## ⚙️ Configuration
 
-Key configuration files:
-- `requirements.txt` - Python dependencies
-- `app/backend/celeryconfig.py` - Celery & Redis settings
-- `LICENSE` - License information
+| File | Purpose |
+|------|---------|
+| `requirements.txt` | 📦 Dependencies |
+| `celeryconfig.py` | ⚡ Performance settings |
+| `LICENSE` | 📜 Legal information |
 
-## Performance Features
+## 🚀 Performance Features
 
-- Background task processing with Celery
-- Redis caching for improved response times
-- Resource management and rate limiting
-- Memory optimization for GPU usage
+- 🔄 Background task processing
+- ⚡ Redis response caching
+- 🎮 GPU memory optimization
+- 🔒 Rate limiting (2 gen/minute)
 
-## License
+## ⚠️ Notes
 
-All Rights Reserved. See LICENSE file for details.
+- 🎮 Requires significant GPU memory
+- ⏱️ Generation may take several minutes
+- 💾 Monitor storage space usage
+- 🔄 Check task status regularly
 
-## Notes
+## 📜 License
 
-- The application requires significant GPU memory for video generation
-- Default rate limit: 2 generations per minute
-- Video generation may take several minutes depending on hardware
-- Ensure adequate disk space for dataset storage
+All Rights Reserved. See [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+Made with ❤️ by Your Name/Organization
+
+[🔝 Back to Top](#-gendatasetvideo)
+
+</div>
